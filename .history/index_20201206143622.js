@@ -1,0 +1,10 @@
+const fs = require("fs");
+const config = require("./config");
+const createPost = require("./posts.js");
+
+const posts = fs
+  .readdirSync(config.dev.contentdir)
+  .map(post => post.slice(0, -3))
+  .map(post => postMethods.createPost(post));
+
+console.log(posts);
